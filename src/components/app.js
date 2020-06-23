@@ -22,9 +22,9 @@ const TextField = ({ plu, newFood }) => {
         newFood();
         setSize(textSize);
       }, 800);
-
       return;
     }
+    if (input.match(/[^0-9]/)) return;
     if (input.length > 5) return;
     setInput(input);
   };
@@ -33,7 +33,6 @@ const TextField = ({ plu, newFood }) => {
     <input
       style={{ fontSize: size }}
       ref={inputRef}
-      type="number"
       value={input}
       className="textfield"
       onChange={(e) => handleInput(e)}
