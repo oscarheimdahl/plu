@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import food from '../food.js';
 
+const textSize = '30vw';
+const textSizeCorrect = '35vw';
 const FoodName = ({ name }) => {
   return <div className="food">{name}</div>;
 };
@@ -8,17 +10,17 @@ const FoodName = ({ name }) => {
 const TextField = ({ plu, newFood }) => {
   console.log(plu);
   const [input, setInput] = useState('');
-  const [size, setSize] = useState('30em');
+  const [size, setSize] = useState(textSize);
 
   const handleInput = (e) => {
     const input = e.target.value;
     if (input === plu) {
       setInput(input);
-      setSize('35em');
+      setSize(textSizeCorrect);
       setTimeout(() => {
         setInput('');
         newFood();
-        setSize('30em');
+        setSize(textSize);
       }, 800);
 
       return;
