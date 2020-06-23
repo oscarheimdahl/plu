@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import food from '../food.js';
 
 const textSize = '30vw';
@@ -8,10 +8,10 @@ const FoodName = ({ name }) => {
 };
 
 const TextField = ({ plu, newFood }) => {
-  console.log(plu);
   const [input, setInput] = useState('');
   const [size, setSize] = useState(textSize);
-
+  useEffect(() => inputRef.current.focus());
+  const inputRef = React.createRef();
   const handleInput = (e) => {
     const input = e.target.value;
     if (input === plu) {
@@ -32,8 +32,7 @@ const TextField = ({ plu, newFood }) => {
   return (
     <input
       style={{ fontSize: size }}
-      onblur="this.focus()"
-      autofocus
+      ref={inputRef}
       type="number"
       value={input}
       className="textfield"
